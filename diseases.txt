@@ -8,7 +8,6 @@ cholera,1896
 yellow fever,1936
 mumps,1963
 rotavirus,1998
-anthrax,1881
 hepatitis b,1981
 hpv,2006
 hepatitis a,1995
