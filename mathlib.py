@@ -26,6 +26,24 @@ def convertMatrixAndRREF(listMatrix):
     a numpy matrix in order to allow us to use optimized algorithms in sympy"""
     return sp.Matrix(np.matrix(listMatrix)).rref()
 
+
+
+def generateAverageDeviations(averageMatrix):
+    """This function is going to return THREE average matricies. Make sure you catch
+    them in the form \"lowerdiv,average,upperdiv = generateAverageDeviations(averagematrix)\"
+    You will need to run each data set with the lower, average, and upper respectivly in order
+    to get an accurate range for your distrobution"""
+    twoTail=.1729
+    lowerMatrix,upperMatrix=[],[]
+    for average in averageMatrix:
+        deviation=average*.1729
+        lowerMatrix.append(average-deviation)
+        upperMatrix.append(average+deviation)
+    return lowerMatrix,averageMatrix,upperMatrix
+
+
+
+
 def rowReduce(matrix):
     """This function will reduce the rows without switching. It's fairly expensive
     computationally. To reduce, we will reduce the rows ith term to 1(where i is
