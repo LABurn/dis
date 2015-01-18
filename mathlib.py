@@ -24,7 +24,7 @@ def addAverages(matrix,averages):
 def convertMatrixAndRREF(listMatrix):
     """This function is designed to take a 2d array from python and convert it to
     a numpy matrix in order to allow us to use optimized algorithms in sympy"""
-    return sp.Matrix(numpy.matrix(listMatrix)).rref()
+    return sp.Matrix(np.matrix(listMatrix)).rref()
 
 def rowReduce(matrix):
     """This function will reduce the rows without switching. It's fairly expensive
@@ -60,6 +60,7 @@ def rowReduce(matrix):
 
 
 if __name__=="__main__":
+    import random
     print("testing array")
     array=generateMatrix()
     for row in array:
@@ -67,8 +68,10 @@ if __name__=="__main__":
         print("\n")
     print("testing addAverages with")
     testArray=[]
-    for i in range(0,20):
-        testArray.append(i)
+    for i in range(20):
+        testArray.append(random.randint(15,200))
     print(testArray)
     array = addAverages(array,testArray)
     print(array)
+    print("Array in RREF")
+    print(convertMatrixAndRREF(array))
