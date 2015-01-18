@@ -21,10 +21,10 @@ def addAverages(matrix,averages):
 
     return matrix
 
-def convertMatrix(listMatrix):
+def convertMatrixAndRREF(listMatrix):
     """This function is designed to take a 2d array from python and convert it to
     a numpy matrix in order to allow us to use optimized algorithms in sympy"""
-    return numpy.matrix(listMatrix)
+    return sp.Matrix(numpy.matrix(listMatrix)).rref()
 
 def rowReduce(matrix):
     """This function will reduce the rows without switching. It's fairly expensive
