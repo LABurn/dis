@@ -1,5 +1,6 @@
 import numpy as np
 import sympy as sp
+import math
 """This library is filled with helper functions, from generating the encessary
 matrix to interpreting this same matrix. If you want to see how these work, feel
 free to execute this script to execute/see each command in context"""
@@ -28,18 +29,31 @@ def convertMatrixAndRREF(listMatrix):
 
 
 
-def generateAverageDeviations(averageMatrix):
+def generateAverageDeviations(twoDArray):
     """This function is going to return THREE average matricies. Make sure you catch
     them in the form \"lowerdiv,average,upperdiv = generateAverageDeviations(averagematrix)\"
     You will need to run each data set with the lower, average, and upper respectivly in order
     to get an accurate range for your distrobution"""
     twoTail=.1729
-    lowerMatrix,upperMatrix=[],[]
-    for average in averageMatrix:
-        deviation=average*.1729
-        lowerMatrix.append(average-deviation)
-        upperMatrix.append(average+deviation)
+    sampleSize=math.sqrt(19)
+
+
+    lowerMatrix,averageMatrix,upperMatrix=[],[],[]
+    for year in twoDArray:
+        average=0
+        standardDeviation=0
+        for publishedNum in year:
+            average+=publishedNum
+        average /= len(year)
+        for publishedNum in year:
+            standardDeviation+=(average-publishedNum)**2
+        standardDeviation /= len(year)
+        averageMatrix.append(average)
+        lowerMatrix.append(average-(twoTail*(standardDeviation/sampleSize)))
+        upperMatrix.append(average+(twoTail*(standardDeviation/sampleSize)))
     return lowerMatrix,averageMatrix,upperMatrix
+
+
 
 
 
