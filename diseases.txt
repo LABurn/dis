@@ -4,7 +4,15 @@ measles,1963
 polio,1952
 tetanus,1924
 typhoid,1896
+cholera,1896
 yellow fever,1936
 mumps,1963
-rabies,1885
 rotavirus,1998
+anthrax,1881
+hepatitis b,1981
+hpv,2006
+hepatitis a,1995
+japanese encephalitis,1950
+lyme disease,1998
+pertussis,1938
+tuberculosis,1921
