@@ -6,9 +6,10 @@ import databaselib
 if __name__ == "__main__":
     print("Generating matrix")
     array = mathlib.generateMatrix(20)
-    print("Querying bullshit")
+    print("Querying database")
     low_bracket, mid_bracket, high_bracket = databaselib.getDataTuples("diseasedata.db", "publicationdata")
 
+    # Calculate averages
     low_disease_averages = []
     for i in range(20):
         sum = 0
@@ -30,11 +31,29 @@ if __name__ == "__main__":
             sum += high_bracket[dis][i][1]
         high_disease_averages.append(float(sum) / float(len(high_bracket)))
 
-    #array = mathlib.addAverages(array,disease_averages)
+    print "array averages"
+    print "low"
+    print low_disease_averages
+    print "mid"
+    print mid_disease_averages
+    print "high"
+    print high_disease_averages
+
+    # Generate final matricies
+    final_low_array = mathlib.addAverages(array, low_disease_averages)
+    final_mid_array = mathlib.addAverages(array, mid_disease_averages)
+    final_high_array = mathlib.addAverages(array, high_disease_averages)
+
+    print "final matricies"
+    print "low"
+    print final_low_array
+    print "mid"
+    print final_mid_array
+    print "high"
+    print final_high_array
+
     # TODO generate standard deviations
-    print("Lower bracket curve in RREF:")
-    print(mathlib.convertMatrixAndRREF(low_disease_averages))
-    print("Middle bracket curve in RREF:")
-    print(mathlib.convertMatrixAndRREF(mid_disease_averages))
-    print("High bracket curve in RREF:")
-    print(mathlib.convertMatrixAndRREF(high_disease_averages))
+
+    print("Lower bracket curve in RREF:\n" + str(mathlib.convertMatrixAndRREF(final_low_array)) + "\n")
+    print("Middle bracket curve in RREF:\n" + str(mathlib.convertMatrixAndRREF(final_mid_array)) + "\n")
+    print("High bracket curve in RREF:\n" + str(mathlib.convertMatrixAndRREF(final_high_array)) + "\n")

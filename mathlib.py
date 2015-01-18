@@ -3,6 +3,7 @@
 import numpy as np
 import sympy as sp
 import math
+import copy
 """This library is filled with helper functions, from generating the encessary
 matrix to interpreting this same matrix. If you want to see how these work, feel
 free to execute this script to execute/see each command in context"""
@@ -21,10 +22,11 @@ def generateMatrix(size):
 
 def addAverages(matrix,averages):
     """This function simply adds each average value to the end of our 20x20 matrix"""
-    for row in range(len(matrix)):
-        matrix[row].append(averages[row])
+    neo=copy.deepcopy(matrix)
+    for row in range(len(neo)):
+        neo[row].append(averages[row])
 
-    return matrix
+    return neo
 
 def convertMatrixAndRREF(listMatrix):
     """This function is designed to take a 2d array from python and convert it to
