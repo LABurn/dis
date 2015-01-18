@@ -35,7 +35,7 @@ def populateDatabase(disease_list_file, database_file, table_name):
 	connection.close()
 	return
 
-def getDataArrays(database_file, table_name):
+def getDataTuples(database_file, table_name):
 	"""Returns 3 arrays containing the tuples of data for lower, middle, and upper
 	portions of the data set. The tuples are organized by year, eacch year having
 	a count of publications for that year."""
@@ -60,7 +60,7 @@ def getDataArrays(database_file, table_name):
 	return lower_block, middle_block, upper_block
 
 if __name__ == "__main__":
-	a, b, c = getDataArrays("diseasedata.db", "publicationdata")
-	print(a)
-	print(b)
-	print(c)
+	a, b, c = getDataTuples("diseasedata.db", "publicationdata")
+	print("Lower: " + str(a))
+	print("Middle: " + str(b))
+	print("Upper: " + str(c))

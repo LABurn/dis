@@ -6,17 +6,19 @@ import math
 """This library is filled with helper functions, from generating the encessary
 matrix to interpreting this same matrix. If you want to see how these work, feel
 free to execute this script to execute/see each command in context"""
-def generateMatrix():
+
+def generateMatrix(size):
     """This function generates a 20x20 matrix, for use with RREF and accurate
     data interpolation"""
     returnedArray=[]
-    for i in range(-20,0):
+    for i in range(-1 * size,0):
         constructedArray=[]
         constructedArray.append(1)
-        for j in range(1,20):
+        for j in range(1,size):
             constructedArray.append(i**j)#Raise i to the jth power, in order to satisfy the polinomial at position len(array)+i in the array
         returnedArray.append(constructedArray)
     return returnedArray
+
 def addAverages(matrix,averages):
     """This function simply adds each average value to the end of our 20x20 matrix"""
     for row in range(len(matrix)):
@@ -36,6 +38,7 @@ def generateAverageDeviations(twoDArray):
     them in the form \"lowerdiv,average,upperdiv = generateAverageDeviations(averagematrix)\"
     You will need to run each data set with the lower, average, and upper respectivly in order
     to get an accurate range for your distrobution"""
+
     twoTail=.1729
     sampleSize=math.sqrt(19)
 
@@ -96,7 +99,7 @@ def rowReduce(matrix):
 if __name__=="__main__":
     import random
     print("testing array")
-    array=generateMatrix()
+    array=generateMatrix(20)
     for row in array:
         print(row)
         print("\n")
